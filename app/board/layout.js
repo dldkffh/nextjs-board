@@ -135,8 +135,8 @@ export default function BoardLayout({ children }) {
                                  />
                                  <Grid container direction='row' justifyContent='space-between' alignItems='center'>
                                     <Box>
-                                       <Typography variant='body2' gutterBottom>
-                                          이순신 <br /> @leess
+                                       <Typography variant='body2'>
+                                          이순신 <br/> @leess
                                        </Typography>
                                     </Box>
                                     <Box>
@@ -156,7 +156,7 @@ export default function BoardLayout({ children }) {
                      {/* 언어 설정 */}
                      <ListItemButton component='a'>
                         <ListItemText primary='언어 설정' />
-                        <Typography variant='body2' gutterBottom>
+                        <Typography variant='body2'>
                            한국어
                         </Typography>
                      </ListItemButton>
