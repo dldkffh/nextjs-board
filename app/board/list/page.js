@@ -12,7 +12,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
-import { InputBase } from '@mui/material';
+import { InputBase } from "@mui/material";
 
 function createData(title, name, uid, date, contents, img) {
    return { title, name, uid, date, contents, img };
@@ -60,9 +60,11 @@ const rows = [
 export default function BoardList() {
    return (
       <>
-         <Typography variant='h6' component='div'>
-            게시판
-         </Typography>
+         <Box>
+            <Typography className='page-title' component='h1'>
+               게시판
+            </Typography>
+         </Box>
 
          <Grid
             container
@@ -70,24 +72,30 @@ export default function BoardList() {
             justifyContent='flex-end'
             alignItems='center'
             spacing={2}
-            sx={{ marginBottom: "10px", marginTop: "10px", height: "42px" }}
+            sx={{ marginTop: "1.75rem", height: "42px" }}
          >
-            <TextField size="small" sx={{ height: "100%", width: { xs: "auto", md: "320px"} }} />
-            <Button variant='outlined' size="small" href='#outlined-buttons' sx={{ padding: "0px", marginLeft: "10px", height: "100%", width: "42px" }}>
+            <TextField size='small' sx={{ height: "100%", width: { xs: "max-content", md: "320px" } }} />
+            <Button
+               variant='outlined'
+               size='small'
+               href='#outlined-buttons'
+               sx={{ padding: "0px", marginLeft: "10px", height: "100%", width: "42px" }}
+            >
                <SearchIcon sx={{ height: "24px", width: "24px" }} />
             </Button>
          </Grid>
 
-         <Box sx={{ marginBottom: "20px" }}>
+         <Box sx={{ marginTop: "1.75rem" }}>
             <List sx={{ width: "100%", bgcolor: "background.paper" }}>
                {rows.map((row) => (
                   <ListItem key={row.name} sx={{ marginTop: "10px" }}>
-                     <Stack container direction='row' justifyContent='flex-end' alignItems='center' spacing={2}>
+                     <Stack container justifyContent='flex-end' alignItems='center' spacing={2} sx={{ flexDirection : { xs: "column", md: "row" } }}>
                         <Box>
                            <Typography variant='body2'>
                               {row.name} {row.uid} {row.date}
                            </Typography>
                            <Typography variant='h6'>{row.title}</Typography>
+                           
                            <Typography variant='body2' component='div'>
                               {row.contents}
                            </Typography>
@@ -107,7 +115,7 @@ export default function BoardList() {
             </List>
          </Box>
 
-         <Grid container direction='row' justifyContent='center' alignItems='center'>
+         <Grid container direction='row' justifyContent='center' alignItems='center' sx={{ marginTop: "1.75rem" }}>
             <Pagination count={10} variant='outlined' shape='rounded' />
          </Grid>
       </>

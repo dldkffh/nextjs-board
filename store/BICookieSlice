@@ -1,0 +1,89 @@
+// Browser Information Cookie Slice
+
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import serverUrl from "../api/serverUrl";
+import { checkToken } from "../service/persist/authService";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
+import i18n from "../style/lang/i18n" 
+
+const base64 = require("base-64");
+let BI = [];
+
+function makeNewBICookie(BI) {
+  const lang = navigator.language.substring(0, 2);
+  const prefertheme = window.matchMedia("(prefers-color-scheme: dark)")
+    ? 1
+    : 0;
+  BI = [lang, prefertheme];
+  i18n.changeLanguage(BI[0]);
+  Cookies.set("BI", base64.encode(BI), { expires: 396 });
+  return BI;
+}
+
+function setBICookie(BI) {  
+  Cookies.set("BI", base64.encode(BI), { expires: 396 });
+  return BI;
+}
+
+function getBICookie(BI) {
+  BI = base64.decode(Cookies.get("BI")).split(",");
+  BI[1] = JSON.parse(BI[1]);
+  i18n.changeLanguage(BI[0]);
+  return BI;
+}
+
+function checkBICookie(BI) {
+  if (Cookies.get("BI") === undefined) {
+    BI = makeNewBICookie(BI);
+    return BI;
+  } else {
+    BI = getBICookie(BI);
+    return BI;
+  }
+}
+
+BI = checkBICookie(BI);
+
+console.log(BI);
+const initialState = {
+  language: BI[0],
+  isDarkTheme: BI[1],
+};
+
+// export const createBICokkie = createAsyncThunk( () => {
+
+// });
+
+const BICookieSlice = createSlice({
+  name: "BICookie",
+  initialState,
+  reducers: {
+    toggleTheme(state) {
+      if (state.isDarkTheme === 1) {
+        BI[1] = 0;
+        setBICookie(BI);
+        state.isDarkTheme = 0;
+      } else {
+        BI[1] = 1;
+        setBICookie(BI);
+        state.isDarkTheme = 1;
+      }
+    },
+    changeLanguage(state, language) {
+      BI[0] = language.payload.language;
+      i18n.changeLanguage(BI[0]);
+      setBICookie(BI);
+      state.language = language.payload.language;
+      console.log(BI);
+    },
+  },
+
+  extraReducers: {},
+});
+
+const { actions, reducers } = BICookieSlice;
+
+export const { toggleTheme, changeLanguage } = actions;
+
+export default BICookieSlice.reducer;

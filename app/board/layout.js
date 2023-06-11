@@ -49,7 +49,7 @@ export default function BoardLayout({ children }) {
 
    return (
       <>
-         <AppBar position='static' sx={{ height: "60px", marginBottom: "20px" }}>
+         <AppBar position='static' sx={{ height: "60px" }}>
             <Container maxWidth='xl' sx={{ height: "inherit" }}>
                <Stack
                   direction='row'
@@ -208,7 +208,7 @@ export default function BoardLayout({ children }) {
             </Container>
          </AppBar>
 
-         <Container maxWidth='xl'>
+         <Container maxWidth='xl' sx={{ marginBottom: "4rem" }}>
             <main>{children}</main>
          </Container>
       </>
