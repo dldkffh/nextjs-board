@@ -1,6 +1,7 @@
 {
-    "hello": "Hello",
-    "dashboard": "Dashboard",
     "language" : "English(en)",
-    "login": "Login"
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "hello": "Hello",
 }

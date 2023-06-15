@@ -1,9 +1,9 @@
 import {configureStore} from "@reduxjs/toolkit";
-import BICookieSlice from "./BICookieSlice";
+import bicSlice from "./bicSlice";
 
 export const store = configureStore({
     reducer: {
-        BICookie: BICookieSlice,
+        bic: bicSlice,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

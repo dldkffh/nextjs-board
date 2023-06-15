@@ -1,6 +1,9 @@
 {
-    "hello": "안녕하세요",
-    "dashboard": "대시보드",
     "language" : "한국어(ko)",
-    "login": "로그인"
+    "login": "로그인",
+    "logout": "로그아웃",
+    "mode": "모드 설정",
+    "ligth-mode": "라이트 모드",
+    "dark-mode": "다크 모드",
+    "system-mode": "시스템 설정",
 }

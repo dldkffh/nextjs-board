@@ -70,6 +70,11 @@ const BICookieSlice = createSlice({
         state.isDarkTheme = 1;
       }
     },
+    changeTheme(state, mode) {
+      if (mode === "light"){
+        
+      }
+    },
     changeLanguage(state, language) {
       BI[0] = language.payload.language;
       i18n.changeLanguage(BI[0]);
