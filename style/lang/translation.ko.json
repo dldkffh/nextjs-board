@@ -1,10 +1,10 @@
 {
-    "set-language" : "언어 설정",
+    "set_language" : "언어 설정",
     "language" : "한국어(ko)",
     "login": "로그인",
     "logout": "로그아웃",
-    "set-mode": "모드 설정",
-    "light-mode": "라이트 모드",
-    "dark-mode": "다크 모드",
-    "system-mode": "시스템 설정"
+    "set_mode": "모드 설정",
+    "light_mode": "라이트 모드",
+    "dark_mode": "다크 모드",
+    "system_mode": "시스템 설정"
 }

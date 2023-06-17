@@ -25,9 +25,9 @@ import SegmentIcon from "@mui/icons-material/Segment";
 
 // import { useDispatch } from "react-redux";
 // import { changeLanguage, checkBIC } from "@/store/bicSlice";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "../../i18n";
 
-export default function BoardLayout({ children }) {
+export default async function BoardLayout({ children }) {
    // const dispatch = useDispatch();
    const [anchorEl, setAnchorEl] = React.useState(null);
    const open = Boolean(anchorEl);
@@ -39,7 +39,7 @@ export default function BoardLayout({ children }) {
    };
 
    //언어 설정
-   const { t } = useTranslation();
+//    const { t } = await useTranslation(lng);
 
    // useEffect(() => {
    //    // Run! Like go get some data from an API.
@@ -154,7 +154,7 @@ export default function BoardLayout({ children }) {
                      </Box>
                      {/* 언어 설정 */}
                      <ListItemButton component='a'>
-                        <ListItemText primary={t("set-language")} />
+                        <ListItemText primary={t("set_language")} />
                         <Typography variant='body2'>{t("language")}</Typography>
                      </ListItemButton>
                      <ListItem sx={{ paddingRight: "10px", paddingLeft: "10px" }}>
@@ -167,13 +167,17 @@ export default function BoardLayout({ children }) {
                            sx={{ width: "100%" }}
                            size='small'
                         >
-                           <MenuItem value={'en'} onClick={() => dispatch(changeLanguage('en'))}>English(en)</MenuItem>
-                           <MenuItem value={'ko'} onClick={() => dispatch(changeLanguage('ko'))}>한국어(ko)</MenuItem>
+                           <MenuItem value={"en"} onClick={() => dispatch(changeLanguage("en"))}>
+                              English(en)
+                           </MenuItem>
+                           <MenuItem value={"ko"} onClick={() => dispatch(changeLanguage("ko"))}>
+                              한국어(ko)
+                           </MenuItem>
                         </Select>
                      </ListItem>
                      {/* 모드 설정 */}
                      <ListItemButton component='a'>
-                        <ListItemText primary={t("set-mode")} />
+                        <ListItemText primary={t("set_mode")} />
                         <Typography variant='body2' gutterBottom>
                            시스템
                         </Typography>
@@ -188,9 +192,9 @@ export default function BoardLayout({ children }) {
                            sx={{ width: "100%", marginBottom: "3px" }}
                            size='small'
                         >
-                           <MenuItem value={"light"}>{t("light-mode")}</MenuItem>
-                           <MenuItem value={"dark"}>{t("dark-mode")}</MenuItem>
-                           <MenuItem value={"system"}>{t("system-mode")}</MenuItem>
+                           <MenuItem value={"light"}>{t("light_mode")}</MenuItem>
+                           <MenuItem value={"dark"}>{t("dark_mode")}</MenuItem>
+                           <MenuItem value={"system"}>{t("system_mode")}</MenuItem>
                         </Select>
                      </ListItem>
                   </Popover>

@@ -1,10 +1,10 @@
 {
-    "set-language" : "Language",
+    "set_language" : "Language",
     "language" : "English(en)",
     "login": "Login",
     "logout": "Logout",
-    "set-mode": "Mode",
-    "light-mode": "light",
-    "dark-mode": "dark",
-    "system-mode": "system"
+    "set_mode": "Mode",
+    "light_mode": "light",
+    "dark_mode": "dark",
+    "system_mode": "system"
 }

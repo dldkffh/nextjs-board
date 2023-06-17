@@ -89,13 +89,19 @@ export default function BoardList() {
             <List sx={{ width: "100%", bgcolor: "background.paper" }}>
                {rows.map((row) => (
                   <ListItem key={row.name} sx={{ marginTop: "10px" }}>
-                     <Stack container justifyContent='flex-end' alignItems='center' spacing={2} sx={{ flexDirection : { xs: "column", md: "row" } }}>
+                     <Stack
+                        container
+                        justifyContent='flex-end'
+                        alignItems='center'
+                        spacing={2}
+                        sx={{ flexDirection: { xs: "column", md: "row" } }}
+                     >
                         <Box>
                            <Typography variant='body2'>
                               {row.name} {row.uid} {row.date}
                            </Typography>
                            <Typography variant='h6'>{row.title}</Typography>
-                           
+
                            <Typography variant='body2' component='div'>
                               {row.contents}
                            </Typography>
