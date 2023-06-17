@@ -1,43 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import Link from "@mui/material/Link";
 import Select from "@mui/material/Select";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import ButtonBase from "@mui/material/ButtonBase";
-import Tooltip from "@mui/material/Tooltip";
-import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import Popover from "@mui/material/Popover";
-import Popper from "@mui/material/Popper";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import Divider from "@mui/material/Divider";
-import BodyFrame from "@/components/BodyFrame";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
 import EditIcon from "@mui/icons-material/Edit";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
 import SegmentIcon from "@mui/icons-material/Segment";
 
+// import { useDispatch } from "react-redux";
+// import { changeLanguage, checkBIC } from "@/store/bicSlice";
+import { useTranslation } from "react-i18next";
+
 export default function BoardLayout({ children }) {
+   // const dispatch = useDispatch();
    const [anchorEl, setAnchorEl] = React.useState(null);
    const open = Boolean(anchorEl);
    const handleClick = (event) => {
@@ -46,6 +37,14 @@ export default function BoardLayout({ children }) {
    const handleClose = () => {
       setAnchorEl(null);
    };
+
+   //언어 설정
+   const { t } = useTranslation();
+
+   // useEffect(() => {
+   //    // Run! Like go get some data from an API.
+   //    dispatch(checkBIC())
+   //  }, []);
 
    return (
       <>
@@ -136,7 +135,7 @@ export default function BoardLayout({ children }) {
                                  <Grid container direction='row' justifyContent='space-between' alignItems='center'>
                                     <Box>
                                        <Typography variant='body2'>
-                                          이순신 <br/> @leess
+                                          이순신 <br /> @leess
                                        </Typography>
                                     </Box>
                                     <Box>
@@ -155,10 +154,8 @@ export default function BoardLayout({ children }) {
                      </Box>
                      {/* 언어 설정 */}
                      <ListItemButton component='a'>
-                        <ListItemText primary='언어 설정' />
-                        <Typography variant='body2'>
-                           한국어
-                        </Typography>
+                        <ListItemText primary={t("set-language")} />
+                        <Typography variant='body2'>{t("language")}</Typography>
                      </ListItemButton>
                      <ListItem sx={{ paddingRight: "10px", paddingLeft: "10px" }}>
                         <Select
@@ -170,17 +167,13 @@ export default function BoardLayout({ children }) {
                            sx={{ width: "100%" }}
                            size='small'
                         >
-                           <MenuItem value=''>
-                              <em>None</em>
-                           </MenuItem>
-                           <MenuItem value={10}>Ten</MenuItem>
-                           <MenuItem value={20}>Twenty</MenuItem>
-                           <MenuItem value={30}>Thirty</MenuItem>
+                           <MenuItem value={'en'} onClick={() => dispatch(changeLanguage('en'))}>English(en)</MenuItem>
+                           <MenuItem value={'ko'} onClick={() => dispatch(changeLanguage('ko'))}>한국어(ko)</MenuItem>
                         </Select>
                      </ListItem>
                      {/* 모드 설정 */}
                      <ListItemButton component='a'>
-                        <ListItemText primary='모드 설정' />
+                        <ListItemText primary={t("set-mode")} />
                         <Typography variant='body2' gutterBottom>
                            시스템
                         </Typography>
@@ -195,12 +188,9 @@ export default function BoardLayout({ children }) {
                            sx={{ width: "100%", marginBottom: "3px" }}
                            size='small'
                         >
-                           <MenuItem value=''>
-                              <em>None</em>
-                           </MenuItem>
-                           <MenuItem value={10}>Ten</MenuItem>
-                           <MenuItem value={20}>Twenty</MenuItem>
-                           <MenuItem value={30}>Thirty</MenuItem>
+                           <MenuItem value={"light"}>{t("light-mode")}</MenuItem>
+                           <MenuItem value={"dark"}>{t("dark-mode")}</MenuItem>
+                           <MenuItem value={"system"}>{t("system-mode")}</MenuItem>
                         </Select>
                      </ListItem>
                   </Popover>

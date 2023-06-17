@@ -1,7 +1,10 @@
 {
+    "set-language" : "Language",
     "language" : "English(en)",
     "login": "Login",
     "logout": "Logout",
-    "dashboard": "Dashboard",
-    "hello": "Hello",
+    "set-mode": "Mode",
+    "light-mode": "light",
+    "dark-mode": "dark",
+    "system-mode": "system"
 }
