@@ -1,11 +1,17 @@
+"use client";
+
 import "../style/globals.scss";
 
-import { ReduxProvider } from "../store/redux-provider";
+import { Provider as ReduxProvider } from 'react-redux'
+// import { ReduxProvider } from "../store/redux-provider";
+// import { Providers as ReduxProvider } from "@/redux/providers";
+
+import { store } from "../redux/store"
 
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 // export function generateStaticParams() {
 //    return [{ locale: "en" }, { locale: "ko" }];
@@ -19,7 +25,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
    const locale = "en";
 
-   // const isDarkTheme = useSelector((state) => state.bic.isDarkTheme);
+   const isDarkTheme = useSelector((state) => state.bic.isDarkTheme);
 
    let messages;
    try {

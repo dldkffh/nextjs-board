@@ -2,18 +2,13 @@
 
 import React from "react";
 import { Table, TableBody, Pagination, Stack, Box, Grid, List, ListItem, ListItemText } from "@mui/material";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
-import { InputBase } from "@mui/material";
+
+import { useSelector, useDispatch } from "react-redux";
 
 import { useTranslations } from "next-intl";
 
@@ -61,8 +56,10 @@ const rows = [
 ];
 
 export default function BoardList() {
+   const isDarkTheme = useSelector((state) => state.bic.isDarkTheme);
+
    const t = useTranslations("Index");
-   
+
    return (
       <>
          <Box>
