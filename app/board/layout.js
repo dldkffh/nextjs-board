@@ -25,9 +25,9 @@ import SegmentIcon from "@mui/icons-material/Segment";
 
 // import { useDispatch } from "react-redux";
 // import { changeLanguage, checkBIC } from "@/store/bicSlice";
-import { useTranslation } from "../../i18n";
+import { useTranslations } from "next-intl";
 
-export default async function BoardLayout({ children }) {
+export default function BoardLayout({ children }) {
    // const dispatch = useDispatch();
    const [anchorEl, setAnchorEl] = React.useState(null);
    const open = Boolean(anchorEl);
@@ -39,7 +39,7 @@ export default async function BoardLayout({ children }) {
    };
 
    //언어 설정
-//    const { t } = await useTranslation(lng);
+   const t = useTranslations("Index");
 
    // useEffect(() => {
    //    // Run! Like go get some data from an API.

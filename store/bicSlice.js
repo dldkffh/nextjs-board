@@ -2,7 +2,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
-import i18n from "@/style/lang/i18n";
+// import i18n from "@/style/lang/i18n";
 
 export const setBIC = createAsyncThunk(`avpv/setBIC`, async (data, { dispatch, getState }) => {
    const { mode, language } = getState().bic;
@@ -21,7 +21,7 @@ export const checkBIC = createAsyncThunk(`avpv/checkBIC`, async (data, { dispatc
 export const makeNewBIC = createAsyncThunk(`avpv/makeNewBIC`, async (data, { dispatch, getState }) => {
    const language = navigator.language.substring(0, 2);
    const isDarkTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? true : false;
-   i18n.changeLanguage(language);
+   // i18n.changeLanguage(language);
    dispatch(changeLanguage(language));
    dispatch(changeTheme(isDarkTheme));
    dispatch(setBIC());
@@ -30,7 +30,7 @@ export const makeNewBIC = createAsyncThunk(`avpv/makeNewBIC`, async (data, { dis
 export const getBIC = createAsyncThunk(`avpv/getBIC`, async (data, { dispatch, getState }) => {
    const language = Cookies.get("language");
    const mode = Cookies.get("mode");
-   i18n.changeLanguage(language);
+   // i18n.changeLanguage(language);
    dispatch(changeLanguage(language));
    dispatch(changeMode(mode));
    dispatch(changeTheme(mode));
@@ -75,7 +75,7 @@ const bicSlice = createSlice({
       },
       changeLanguage(state, data) {
          state.language = data.payload;
-         i18n.changeLanguage(data.payload);
+         // i18n.changeLanguage(data.payload);
          Cookies.set("language", data.payload, { expires: 365 });
       },
    },

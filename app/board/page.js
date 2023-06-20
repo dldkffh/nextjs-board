@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { Table, TableBody, Pagination, Stack, Box, Grid, List, ListItem, ListItemText } from "@mui/material";
 import TableCell from "@mui/material/TableCell";
@@ -13,6 +14,8 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 import { InputBase } from "@mui/material";
+
+import { useTranslations } from "next-intl";
 
 function createData(title, name, uid, date, contents, img) {
    return { title, name, uid, date, contents, img };
@@ -58,11 +61,13 @@ const rows = [
 ];
 
 export default function BoardList() {
+   const t = useTranslations("Index");
+   
    return (
       <>
          <Box>
             <Typography className='page-title' component='h1'>
-               게시판
+               {t("title")}
             </Typography>
          </Box>
 
