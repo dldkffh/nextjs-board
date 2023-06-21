@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Table, TableBody, Pagination, Stack, Box, Grid, List, ListItem, ListItemText } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -62,6 +63,7 @@ export default function BoardList() {
 
    return (
       <>
+       <Checkbox defaultChecked color={"neutral"} />
          <Box>
             <Typography className='page-title' component='h1'>
                {t("title")}
