@@ -27,7 +27,7 @@ import SegmentIcon from "@mui/icons-material/Segment";
 // import { changeLanguage, checkBIC } from "@/store/bicSlice";
 import { useTranslations } from "next-intl";
 
-export default function BoardLayout({ children }) {
+export default function BoardLayout({ children, params: { locale } }) {
    // const dispatch = useDispatch();
    const [anchorEl, setAnchorEl] = React.useState(null);
    const open = Boolean(anchorEl);

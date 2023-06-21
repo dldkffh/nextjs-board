@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import Image from "next/image";
 
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
 import { useTranslations } from "next-intl";
 
@@ -56,7 +56,7 @@ const rows = [
 ];
 
 export default function BoardList() {
-   const isDarkTheme = useSelector((state) => state.bic.isDarkTheme);
+   // const isDarkTheme = useSelector((state) => state.bic.isDarkTheme);
 
    const t = useTranslations("Index");
 
