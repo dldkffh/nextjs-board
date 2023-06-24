@@ -4,13 +4,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 // import i18n from "@/style/lang/i18n";
 
-export const setBIC = createAsyncThunk(`avpv/setBIC`, async (data, { dispatch, getState }) => {
+// export const setBIC = createAsyncThunk(`avpv/setBIC`, async (data, { dispatch, getState }) => {
+
+export const setBIC = createAsyncThunk(`avpv/setBIC`, async ({ getState }) => {
    const { mode, language } = getState().bic;
    Cookies.set("language", language, { expires: 365 });
    Cookies.set("mode", mode, { expires: 365 });
 });
 
-export const checkBIC = createAsyncThunk(`avpv/checkBIC`, async (data, { dispatch, getState }) => {
+export const checkBIC = createAsyncThunk(`avpv/checkBIC`, async ({ dispatch }) => {
    if (Cookies.get("language") === undefined) {
       dispatch(makeNewBIC());
    } else {
@@ -18,7 +20,7 @@ export const checkBIC = createAsyncThunk(`avpv/checkBIC`, async (data, { dispatc
    }
 });
 
-export const makeNewBIC = createAsyncThunk(`avpv/makeNewBIC`, async (data, { dispatch, getState }) => {
+export const makeNewBIC = createAsyncThunk(`avpv/makeNewBIC`, async ({ dispatch }) => {
    const language = navigator.language.substring(0, 2);
    const isDarkTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? true : false;
    // i18n.changeLanguage(language);
@@ -27,7 +29,7 @@ export const makeNewBIC = createAsyncThunk(`avpv/makeNewBIC`, async (data, { dis
    dispatch(setBIC());
 });
 
-export const getBIC = createAsyncThunk(`avpv/getBIC`, async (data, { dispatch, getState }) => {
+export const getBIC = createAsyncThunk(`avpv/getBIC`, async ({ dispatch }) => {
    const language = Cookies.get("language");
    const mode = Cookies.get("mode");
    // i18n.changeLanguage(language);
@@ -37,7 +39,7 @@ export const getBIC = createAsyncThunk(`avpv/getBIC`, async (data, { dispatch, g
 });
 
 const initialState = {
-   language: 'en',
+   language: "en",
    mode: "system", // light, dark, system
    isDarkTheme: true,
 };
@@ -71,7 +73,7 @@ const bicSlice = createSlice({
       changeMode(state, data) {
          state.mode = data.payload;
          Cookies.set("mode", data.payload, { expires: 365 });
-         changeTheme(data.payload)
+         changeTheme(data.payload);
       },
       changeLanguage(state, data) {
          state.language = data.payload;
