@@ -4,7 +4,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 // import i18n from "@/style/lang/i18n";
 
-// export const setBIC = createAsyncThunk(`avpv/setBIC`, async (data, { dispatch, getState }) => {
+// Example
+// export const setBIC = createAsyncThunk(`avpv/setBIC`, async (data, { dispatch, getState }) => {});
 
 export const setBIC = createAsyncThunk(`avpv/setBIC`, async ({ getState }) => {
    const { mode, language } = getState().bic;
