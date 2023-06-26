@@ -22,9 +22,12 @@ import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
 import SegmentIcon from "@mui/icons-material/Segment";
 
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeLanguage, changeMode, checkBIC } from "@/store/slice/bicSlice";
 
 const Header = () => {
+   const dispatch = useDispatch();
+   
    const [anchorEl, setAnchorEl] = React.useState(null);
    const open = Boolean(anchorEl);
    const handleClick = (event) => {
@@ -37,6 +40,10 @@ const Header = () => {
    const { t } = useTranslation("common");
 
    const { language, mode, isDarkTheme } = useSelector((state) => state.bic);
+
+   useEffect(() => {
+      dispatch(checkBIC());
+   }, []);
 
    return (
       <>
@@ -184,9 +191,15 @@ const Header = () => {
                            sx={{ width: "100%", marginBottom: "3px" }}
                            size='small'
                         >
-                           <MenuItem value={"light"}>{t("light_mode")}</MenuItem>
-                           <MenuItem value={"dark"}>{t("dark_mode")}</MenuItem>
-                           <MenuItem value={"system"}>{t("system_mode")}</MenuItem>
+                           <MenuItem value={"light"} onClick={() => dispatch(changeMode("light"))}>
+                              {t("light_mode")}
+                           </MenuItem>
+                           <MenuItem value={"dark"} onClick={() => dispatch(changeMode("dark"))}>
+                              {t("dark_mode")}
+                           </MenuItem>
+                           <MenuItem value={"system"} onClick={() => dispatch(changeMode("system"))}>
+                              {t("system_mode")}
+                           </MenuItem>
                         </Select>
                      </ListItem>
                   </Popover>
