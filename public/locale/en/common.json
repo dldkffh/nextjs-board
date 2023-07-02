@@ -8,8 +8,11 @@
    "light_mode": "light",
    "dark_mode": "dark",
    "system_mode": "system",
-
    "board": "Board",
    "new_post": "new post",
-   "save": "save"
+   "title": "title",
+   "cancel": "cancel",
+   "save": "save",
+   "edit": "edit",
+   "delete": "delete"
 }

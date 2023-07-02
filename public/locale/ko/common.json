@@ -8,8 +8,11 @@
    "light_mode": "라이트 모드",
    "dark_mode": "다크모드",
    "system_mode": "시스템 설정",
-
    "board": "게시판",
    "new_post": "글쓰기",
-   "save": "저장"
+   "title": "제목",
+   "cancel": "취소",
+   "save": "저장",
+   "edit": "수정",
+   "delete": "삭제"
 }

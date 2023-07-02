@@ -1,7 +1,5 @@
 import React from "react";
 
-import Head from "next/head";
-import Image from "next/image";
 // import styles from '../style/Home.module.scss'
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,6 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 // 구조
 import Layout from "@/components/layout";
+import Head from "next/head";
+import Image from "next/image"
 import { Container, Paper, Box } from "@mui/material";
 import { Table, TableBody, Pagination, Stack, Grid, List, ListItem, ListItemText } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
@@ -70,11 +70,14 @@ export default function Home() {
    const { t } = useTranslation("common");
 
    return (
-      <Layout>
+      <>
+         {/* // <Layout> */}
          <Box>
             <Typography className='page-title' component='h1'>
-               {t("board")}
+               {t("save")}
             </Typography>
+
+            <Button variant='contained'>{t("new_post")}</Button>
          </Box>
 
          <Grid
@@ -111,13 +114,13 @@ export default function Home() {
                            <Typography variant='body2'>
                               {row.name} {row.uid} {row.date}
                            </Typography>
-                           <Typography variant='h6'>{row.title}</Typography>
+                           <Typography component='h2' variant='h5'>{row.title}</Typography>
 
                            <Typography variant='body2' component='div'>
                               {row.contents}
                            </Typography>
                         </Box>
-                        <Box>
+                        {/* <Box>
                            <Image
                               src={row.img}
                               // srcSet={`${row.img}?w=180&h=180&fit=crop&auto=format&dpr=2 2x`}
@@ -125,7 +128,7 @@ export default function Home() {
                               height={180}
                               alt={row.title}
                            />
-                        </Box>
+                        </Box> */}
                      </Stack>
                   </ListItem>
                ))}
@@ -135,6 +138,7 @@ export default function Home() {
          <Grid container direction='row' justifyContent='center' alignItems='center' sx={{ marginTop: "1.75rem" }}>
             <Pagination count={10} variant='outlined' shape='rounded' />
          </Grid>
-      </Layout>
+         {/* // </Layout> */}
+      </>
    );
 }

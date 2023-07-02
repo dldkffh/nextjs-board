@@ -41,10 +41,6 @@ const Header = () => {
 
    const { language, mode, isDarkTheme } = useSelector((state) => state.bic);
 
-   useEffect(() => {
-      dispatch(checkBIC());
-   }, []);
-
    return (
       <>
          <AppBar position='static' sx={{ height: "60px" }}>
