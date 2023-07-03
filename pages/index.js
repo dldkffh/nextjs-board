@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 // 구조
 import Layout from "@/components/layout";
 import Head from "next/head";
-import Image from "next/image"
+import Image from "next/image";
 import { Container, Paper, Box } from "@mui/material";
 import { Table, TableBody, Pagination, Stack, Grid, List, ListItem, ListItemText } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
@@ -71,13 +71,10 @@ export default function Home() {
 
    return (
       <>
-         {/* // <Layout> */}
          <Box>
             <Typography className='page-title' component='h1'>
-               {t("save")}
+               {t("board")}
             </Typography>
-
-            <Button variant='contained'>{t("new_post")}</Button>
          </Box>
 
          <Grid
@@ -88,7 +85,7 @@ export default function Home() {
             spacing={2}
             sx={{ marginTop: "1.75rem", height: "42px" }}
          >
-            <TextField size='small' sx={{ height: "100%", width: { xs: "max-content", md: "320px" } }} />
+            <TextField size='small' sx={{ height: "100%", width: "max-content" }} />
             <Button
                variant='outlined'
                size='small'
@@ -99,46 +96,40 @@ export default function Home() {
             </Button>
          </Grid>
 
-         <Box sx={{ marginTop: "1.75rem" }}>
-            <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-               {rows.map((row) => (
-                  <ListItem key={row.name} sx={{ marginTop: "10px" }}>
-                     <Stack
-                        container
-                        justifyContent='flex-end'
-                        alignItems='center'
-                        spacing={2}
-                        sx={{ flexDirection: { xs: "column", md: "row" } }}
-                     >
-                        <Box>
-                           <Typography variant='body2'>
-                              {row.name} {row.uid} {row.date}
-                           </Typography>
-                           <Typography component='h2' variant='h5'>{row.title}</Typography>
+         <List sx={{ marginTop: 4, width: "100%", bgcolor: "background.paper" }}>
+            {rows.map((row) => (
+               <ListItem key={row.name} sx={{ marginTop: "10px" }}>
+                  <Stack
+                     container
+                     justifyContent='flex-end'
+                     alignItems='center'
+                     spacing={2}
+                     sx={{ flexDirection: { xs: "column", md: "row" } }}
+                  >
+                     <Box>
+                        <Typography variant='body2'>
+                           {row.name} {row.uid} {row.date}
+                        </Typography>
+                        <Typography component='h2' variant='h5'>
+                           {row.title}
+                        </Typography>
 
-                           <Typography variant='body2' component='div'>
-                              {row.contents}
-                           </Typography>
-                        </Box>
-                        {/* <Box>
-                           <Image
-                              src={row.img}
-                              // srcSet={`${row.img}?w=180&h=180&fit=crop&auto=format&dpr=2 2x`}
-                              width={180}
-                              height={180}
-                              alt={row.title}
-                           />
-                        </Box> */}
-                     </Stack>
-                  </ListItem>
-               ))}
-            </List>
-         </Box>
+                        <Typography variant='body2' component='div'>
+                           {row.contents}
+                        </Typography>
+                     </Box>
+                  </Stack>
+               </ListItem>
+            ))}
+         </List>
 
          <Grid container direction='row' justifyContent='center' alignItems='center' sx={{ marginTop: "1.75rem" }}>
             <Pagination count={10} variant='outlined' shape='rounded' />
          </Grid>
-         {/* // </Layout> */}
+
+         <Stack direction='row' justifyContent='flex-end' alignItems='center' spacing={1} sx={{ marginTop: "1.75rem" }}>
+            <Button variant='contained'>{t("new_post")}</Button>
+         </Stack>
       </>
    );
 }

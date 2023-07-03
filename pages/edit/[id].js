@@ -17,20 +17,18 @@ export default function Edit() {
 
    return (
       <>
-         <Container maxWidth='md' sx={{ marginTop: 4 }}>
-            <Stack spacing={3}>
-               <Box>
-                  <TextField id='standard-basic' variant='standard' label='제목' sx={{ width: "100%" }} />
-               </Box>
-               <Paper>
-                  <TextField id='outlined-basic' variant='outlined' multiline rows={27} sx={{ width: "100%" }} />
-               </Paper>
-               <Stack direction='row' justifyContent='flex-end' alignItems='center' spacing={1}>
-                  <Button variant='outlined'>{t("cancel")}</Button>
-                  <Button variant='contained'>{t("save")}</Button>
-               </Stack>
+         <Stack spacing={3} sx={{ marginTop: 4 }}>
+            <Box>
+               <TextField id='standard-basic' variant='standard' label='제목' sx={{ width: "100%" }} />
+            </Box>
+            <Paper>
+               <TextField id='outlined-basic' variant='outlined' multiline rows={27} sx={{ width: "100%" }} />
+            </Paper>
+            <Stack direction='row' justifyContent='flex-end' alignItems='center' spacing={1}>
+               <Button variant='outlined'>{t("cancel")}</Button>
+               <Button variant='contained'>{t("save")}</Button>
             </Stack>
-         </Container>
+         </Stack>
       </>
    );
 }

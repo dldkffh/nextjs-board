@@ -27,7 +27,7 @@ export default function Layout({ children }) {
       <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
          <CssBaseline />
          <Header />
-         <Container maxWidth='xl' sx={{ marginBottom: "4rem" }}>
+         <Container maxWidth='md' sx={{ marginBottom: "4rem" }}>
             <main>{children}</main>
          </Container>
          <Footer />

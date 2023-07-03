@@ -18,24 +18,20 @@ export default function View() {
 
    return (
       <>
-         <Container maxWidth='md' sx={{ marginTop: 6 }}>
-            <Stack spacing={3}>
-               <Box >
-                  <Typography component='h1' variant='h5'>
-                     제목
-                  </Typography>
-               </Box>
-               <Box>
-                  <Typography component='body1'>
-                     본문 글씨
-                  </Typography>
-               </Box>
-               <Stack direction='row' justifyContent='flex-end' alignItems='center' spacing={1}>
-                  <Button variant='outlined'>{t("delete")}</Button>
-                  <Button variant='contained'>{t("edit")}</Button>
-               </Stack>
+         <Stack spacing={3} sx={{ marginTop: 6 }}>
+            <Box>
+               <Typography component='h1' variant='h5'>
+                  제목
+               </Typography>
+            </Box>
+            <Box>
+               <Typography component='body1'>본문 글씨</Typography>
+            </Box>
+            <Stack direction='row' justifyContent='flex-end' alignItems='center' spacing={1}>
+               <Button variant='outlined'>{t("delete")}</Button>
+               <Button variant='contained'>{t("edit")}</Button>
             </Stack>
-         </Container>
+         </Stack>
       </>
    );
 }
