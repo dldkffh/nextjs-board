@@ -16,6 +16,7 @@ import Popover from "@mui/material/Popover";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import EditIcon from "@mui/icons-material/Edit";
+import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from "@mui/icons-material/Logout";
 
 import FiberSmartRecordIcon from "@mui/icons-material/FiberSmartRecord";
@@ -25,9 +26,12 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { changeLanguage, changeMode, checkBIC } from "@/store/slice/bicSlice";
 
+import { signIn, useSession, signOut } from "next-auth/react";
+
 const Header = () => {
    const dispatch = useDispatch();
-   
+   const { data, status } = useSession();
+
    const [anchorEl, setAnchorEl] = React.useState(null);
    const open = Boolean(anchorEl);
    const handleClick = (event) => {
@@ -109,42 +113,51 @@ const Header = () => {
                               padding: "5px",
                               border: 1,
                               borderRadius: "10px",
-                              paddingTop: "17.5px",
-                              paddingBottom: "10px",
-                              paddingLeft: "10px",
-                              paddingRight: "10px",
+                              padding: "12px",
                            }}
                         >
-                           <Box
-                              sx={{
-                                 marginBottom: "17.5px",
-                              }}
-                           >
-                              {/* 사용자 프로필 */}
-                              <Stack direction='row' justifyContent='flex-start' alignItems='center' spacing={2}>
-                                 <Avatar
-                                    alt='Remy Sharp'
-                                    // src='/static/images/avatar/1.jpg'
-                                    sx={{ width: "96px", height: "96px" }}
-                                 />
-                                 <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-                                    <Box>
-                                       <Typography variant='body2'>
-                                          이순신 <br /> @leess
-                                       </Typography>
-                                    </Box>
-                                    <Box>
-                                       <IconButton onClick={handleClose} aria-label='delete' color='inherit'>
-                                          <EditIcon sx={{ width: "16px", height: "16px" }} />
-                                       </IconButton>
-                                    </Box>
-                                 </Grid>
-                              </Stack>
-                           </Box>
-                           <Button variant='outlined' onClick={handleClose}>
+                           {/* <Button variant='outlined' onClick={handleClose}>
                               {t("logout")}
                               <LogoutIcon sx={{ position: "absolute", right: "10px", width: "16px", height: "16px" }} />
-                           </Button>
+                           </Button> */}
+                           {data?.user ? (
+                              <>
+                                 <Box
+                                    sx={{
+                                       marginTop: "7.5px",
+                                       marginBottom: "17.5px",
+                                    }}
+                                 >
+                                    {/* 사용자 프로필 */}
+                                    <Stack direction='row' justifyContent='flex-start' alignItems='center' spacing={2}>
+                                       <Avatar
+                                          alt='Remy Sharp'
+                                          src={data?.user?.image}
+                                          sx={{ width: "96px", height: "96px" }}
+                                       />
+                                       <Grid
+                                          container
+                                          direction='row'
+                                          justifyContent='space-between'
+                                          alignItems='center'
+                                       >
+                                          <Box>
+                                             <Typography variant='body2'>{data?.user?.name}</Typography>
+                                             <Typography variant='body2'>{data?.user?.email}</Typography>
+                                          </Box>
+                                          <Box>
+                                             <IconButton onClick={handleClose} aria-label='delete' color='inherit'>
+                                                <SettingsIcon sx={{ width: "16px", height: "16px" }} />
+                                             </IconButton>
+                                          </Box>
+                                       </Grid>
+                                    </Stack>
+                                 </Box>
+                                 <Button onClick={() => signOut()}>Logout</Button>
+                              </>
+                           ) : (
+                              <Button onClick={() => signIn("google")}>Google Login</Button>
+                           )}
                         </Stack>
                      </Box>
                      {/* 언어 설정 */}
@@ -173,7 +186,7 @@ const Header = () => {
                      {/* 모드 설정 */}
                      <ListItemButton component='a'>
                         <ListItemText primary={t("set_mode")} />
-                        <Typography variant='body2' gutterBottom>
+                        <Typography variant='body2' gutterBottom>sub
                            {t(mode + "_mode")}
                         </Typography>
                      </ListItemButton>

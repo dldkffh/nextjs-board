@@ -6,6 +6,8 @@ import Footer from "../footer";
 import { useSelector, useDispatch } from "react-redux";
 import { checkBIC } from "@/store/slice/bicSlice";
 
+import { signIn, useSession, signOut } from "next-auth/react";
+
 import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
 import darkTheme from "@/style/theme/dark";
 import lightTheme from "@/style/theme/light";
