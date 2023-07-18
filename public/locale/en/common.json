@@ -1,0 +1,18 @@
+{
+   "sgin_up": "Sgin Up",
+   "login": "Login",
+   "logout": "logout",
+   "set_language": "Language",
+   "current_language": "English(en)",
+   "set_mode": "Mode",
+   "light_mode": "light",
+   "dark_mode": "dark",
+   "system_mode": "system",
+   "board": "Board",
+   "new_post": "new post",
+   "title": "title",
+   "cancel": "cancel",
+   "save": "save",
+   "edit": "edit",
+   "delete": "delete"
+}

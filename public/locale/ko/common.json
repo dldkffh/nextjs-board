@@ -1,0 +1,18 @@
+{
+   "sgin_up": "회원가입",
+   "login": "로그인",
+   "logout": "로그아웃",
+   "set_language": "언어설정",
+   "current_language": "한국어(ko)",
+   "set_mode": "모드설정",
+   "light_mode": "라이트 모드",
+   "dark_mode": "다크모드",
+   "system_mode": "시스템 설정",
+   "board": "게시판",
+   "new_post": "글쓰기",
+   "title": "제목",
+   "cancel": "취소",
+   "save": "저장",
+   "edit": "수정",
+   "delete": "삭제"
+}
